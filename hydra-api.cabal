@@ -1,0 +1,30 @@
+cabal-version:       >=1.10
+name:                hydra-api
+version:             0.2.0.0
+synopsis:            Hydra CI Types and API
+license:             BSD3
+license-file:        LICENSE
+author:              Aycan Irican <iricanaycan@gmail.com>
+maintainer:          iricanaycan@gmail.com
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+library hydra
+  exposed-modules: Network.Hydra.API
+                 , Network.Hydra.Client
+                 , Network.Hydra.Project
+                 , Network.Hydra.Jobset
+                 , Network.Hydra.Eval
+                 , Network.Hydra.Build
+  other-modules: Network.Hydra.Internal.Utils
+  build-depends: base
+               , servant
+               , servant-client
+               , http-client
+               , http-client-tls
+               , aeson
+               , text
+               , containers
+               , unordered-containers
+
+  default-language:    Haskell2010
