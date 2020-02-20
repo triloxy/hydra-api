@@ -14,10 +14,11 @@ import Data.Text
 import Data.Aeson
 import Servant.API
 --------------------------------------------------------------------------------
-import qualified Network.Hydra.Project as Hydra
-import qualified Network.Hydra.Jobset  as Hydra
-import qualified Network.Hydra.Eval    as Hydra
-import qualified Network.Hydra.Build   as Hydra
+import qualified Network.Hydra.Project  as Hydra
+import qualified Network.Hydra.Jobset   as Hydra
+import qualified Network.Hydra.Eval     as Hydra
+import qualified Network.Hydra.Build    as Hydra
+import qualified Network.Hydra.Measures as Hydra
 --------------------------------------------------------------------------------
 
 type HydraAPI
@@ -46,6 +47,28 @@ type HydraAPI
   :<|> "build"
        :> Capture "buildno" Int
        :> Get '[JSON] Hydra.Build
+    -- Measure API
+  :<|> "job"
+       :> Capture "project" Text
+       :> Capture "jobset"  Text
+       :> Capture "attribute" Text
+       :> "build-times"
+       :> Get '[JSON] Hydra.BuildTimes
+
+  :<|> "job"
+       :> Capture "project" Text
+       :> Capture "jobset"  Text
+       :> Capture "attribute" Text
+       :> "closure-sizes"
+       :> Get '[JSON] Hydra.ClosureSizes
+
+  :<|> "job"
+       :> Capture "project" Text
+       :> Capture "jobset"  Text
+       :> Capture "attribute" Text
+       :> "output-sizes"
+       :> Get '[JSON] Hydra.OutputSizes
+
 
 hydraApi :: Proxy HydraAPI
 hydraApi = Proxy

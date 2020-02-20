@@ -2,12 +2,17 @@
 {-# LANGUAGE TupleSections     #-}
 
 module Network.Hydra.Eval
+  ( Input (..)
+  , EvalInputs
+  , Eval (..)
+  , Evals (..)
+  )
   where
 
 --------------------------------------------------------------------------------
 import Data.Text
 import Data.Aeson
-import Data.Aeson.Types (Parser)
+import Data.Aeson.Types              (Parser)
 import Network.Hydra.Internal.Utils
 import Data.Map.Strict               as M
 import qualified Data.List           as L

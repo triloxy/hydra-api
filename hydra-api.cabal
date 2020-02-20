@@ -10,12 +10,14 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 library hydra
-  exposed-modules: Network.Hydra.API
+  exposed-modules: Network.Hydra
+                 , Network.Hydra.API
                  , Network.Hydra.Client
                  , Network.Hydra.Project
                  , Network.Hydra.Jobset
                  , Network.Hydra.Eval
                  , Network.Hydra.Build
+                 , Network.Hydra.Measures
   other-modules: Network.Hydra.Internal.Utils
   build-depends: base
                , servant
@@ -26,5 +28,6 @@ library hydra
                , text
                , containers
                , unordered-containers
+               , pretty-show
 
   default-language:    Haskell2010

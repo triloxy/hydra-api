@@ -1,9 +1,13 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Network.Hydra
   ( getProjects
   , getProject
   , getJobset
   , getEvals
   , getBuild
+  , getBuildTimes
+  , getClosureSizes
+  , getOutputSizes
   , defaultClientEnv
   )
   where
@@ -26,14 +30,9 @@ defaultClientEnv = do
   manager <- newManager tlsManagerSettings
   pure $ mkClientEnv manager baseUrl
 
-(getProjects :<|> getProject :<|> getJobset :<|> getEvals :<|> getBuild)
+(getProjects :<|> getProject :<|> getJobset :<|> getEvals :<|> getBuild :<|> getBuildTimes :<|> getClosureSizes :<|> getOutputSizes)
   = hoistClient hydraApi
     ( fmap (either (error . show) id)
       . flip runClientM (unsafePerformIO defaultClientEnv)
     )
     (client hydraApi)
-
--- >>> :t getProject
--- getProject :: Text -> IO Network.Hydra.Project.Project
-
-

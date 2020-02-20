@@ -8,10 +8,11 @@ import Servant.API
 import Servant.Client
 import Data.Text
 --------------------------------------------------------------------------------
-import qualified Network.Hydra.Project as Hydra
-import qualified Network.Hydra.Jobset  as Hydra
-import qualified Network.Hydra.Eval    as Hydra
-import qualified Network.Hydra.Build   as Hydra
+import qualified Network.Hydra.Project  as Hydra
+import qualified Network.Hydra.Jobset   as Hydra
+import qualified Network.Hydra.Eval     as Hydra
+import qualified Network.Hydra.Build    as Hydra
+import qualified Network.Hydra.Measures as Hydra
 import           Network.Hydra.API
 --------------------------------------------------------------------------------
 
@@ -23,4 +24,9 @@ getJobset   :: Text -> Text -> ClientM Hydra.Jobset
 getEvals    :: Text -> Text -> ClientM Hydra.Evals
 getBuild    :: Int -> ClientM Hydra.Build
 
-(getProjects :<|> getProject :<|> getJobset :<|> getEvals :<|> getBuild) = client hydraApi
+-- TODO: Implement metrics
+getBuildTimes   :: Text -> Text -> Text -> ClientM Hydra.BuildTimes
+getClosureSizes :: Text -> Text -> Text -> ClientM Hydra.ClosureSizes
+getOutputSizes  :: Text -> Text -> Text -> ClientM Hydra.OutputSizes
+
+(getProjects :<|> getProject :<|> getJobset :<|> getEvals :<|> getBuild :<|> getBuildTimes :<|> getClosureSizes :<|> getOutputSizes) = client hydraApi

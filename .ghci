@@ -1,0 +1,6 @@
+:set -i.:config:dist/build/autogen
+:set -DDEVELOPMENT
+:set -XCPP -XTemplateHaskell -XQuasiQuotes -XTypeFamilies -XFlexibleContexts -XGADTs -XOverloadedStrings -XMultiParamTypeClasses -XGeneralizedNewtypeDeriving -XEmptyDataDecls -XDeriveDataTypeable
+:def pretty \_ -> return ("import Text.Show.Pretty (pPrint, ppShow)\n:set -interactive-print pPrint")
+:def no-pretty \_ -> return (":set -interactive-print System.IO.print")
+
