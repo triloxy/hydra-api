@@ -1,6 +1,6 @@
 cabal-version:       >=1.10
 name:                hydra-api
-version:             0.2.0.0
+version:             0.3.0.0
 synopsis:            Hydra CI Types and API
 license:             BSD3
 license-file:        LICENSE
